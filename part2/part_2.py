@@ -63,20 +63,7 @@ def crop_image(img_path, pixels):
 
 
 def crop_around_tfls(img, tfl_pixels, not_tfl_pixels):
-    # images = []
     labels = [1] * len(tfl_pixels) + [0] * len(not_tfl_pixels)
-    # im = np.asarray(Image.open(img))
-    # for pixel in tfl_pixels + list(not_tfl_pixels):
-    #     left = max(0, pixel[1] - 40)
-    #     right = min(2048, pixel[1] + 40)
-    #     top = max(0, pixel[0] - 40)
-    #     bottom = min(1024, pixel[0] + 40)
-    #     cropped = im[int(top):int(bottom) + 1, int(left):int(right) + 1, :]
-    #     width, height = cropped.shape[:2]
-    #     if width < 81 or height < 81:
-    #         new_pixel = (pixel[0] - top, pixel[1] - left)
-    #         cropped = deal_with_edge_cases(new_pixel, cropped)
-    #     images.append(cropped)
     images = crop_image(img, tfl_pixels + list(not_tfl_pixels))
 
     return images, labels
